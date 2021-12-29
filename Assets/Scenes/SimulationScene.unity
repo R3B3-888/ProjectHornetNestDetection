@@ -3317,7 +3317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &963194226
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6207,6 +6207,7 @@ MonoBehaviour:
   - {fileID: 1396493340046859609, guid: d9f51aee53e490447bcb8b5f6a78b527, type: 3}
   - {fileID: 15099419666861582, guid: 8e7845835ab37e040815d169d1509351, type: 3}
   - {fileID: 672394873060239570, guid: 29bf49ebfda6c404da5f9501a851413e, type: 3}
+  nestPrefab: {fileID: 6984920542403125191, guid: 013f250b765b6524bb2ab406f8449896, type: 3}
   gradient:
     serializedVersion: 2
     key0: {r: 0.2435208, g: 0.27450982, b: 0.16862746, a: 1}
@@ -6397,6 +6398,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3293273846185240067, guid: 48915bab165380647865198ca18f5e10, type: 3}
   m_PrefabInstance: {fileID: 3293273844822128277}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2125356458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3293273846185240065, guid: 48915bab165380647865198ca18f5e10, type: 3}
+  m_PrefabInstance: {fileID: 3293273844822128277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2125356460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125356458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63eb5c1fbb9d5aa49afb116defc51386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2138197742
 GameObject:
   m_ObjectHideFlags: 0
@@ -6485,7 +6503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 505168027807758000, guid: b421e87c80c8c2242b8a8a157bab415b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 505168027807758003, guid: b421e87c80c8c2242b8a8a157bab415b, type: 3}
       propertyPath: m_RootOrder
@@ -6546,7 +6564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1123433563913712568, guid: 297b9f2a4f1193c4db253d6871692b37, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1123433563913712569, guid: 297b9f2a4f1193c4db253d6871692b37, type: 3}
       propertyPath: m_RootOrder
@@ -6601,6 +6619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 192596950}
     m_Modifications:
+    - target: {fileID: 3293273846185240064, guid: 48915bab165380647865198ca18f5e10, type: 3}
+      propertyPath: distanceMinDroneAndTrees
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 3293273846185240065, guid: 48915bab165380647865198ca18f5e10, type: 3}
       propertyPath: m_Name
       value: DronePatrol

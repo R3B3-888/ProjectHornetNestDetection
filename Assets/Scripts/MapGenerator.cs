@@ -10,6 +10,7 @@ public class MapGenerator : MonoBehaviour
     private AnimationCurve heightCurve;
     public bool giganticMap;
     public GameObject[] objects;
+    public GameObject nestPrefab;
     [SerializeField] private Gradient gradient;
 
     // modifiable by ui
@@ -246,7 +247,8 @@ public class MapGenerator : MonoBehaviour
     private void SpawnNest() 
     {
         int id = UnityEngine.Random.Range(0,trees.Count);
-        TreeWithNest tn = new TreeWithNest(id, trees[id]);
+        GameObject nest = Instantiate(nestPrefab);
+        TreeWithNest tn = new TreeWithNest(id, trees[id], nest);
         treeWithNest = tn;
         Debug.Log(tn.toString());
     }

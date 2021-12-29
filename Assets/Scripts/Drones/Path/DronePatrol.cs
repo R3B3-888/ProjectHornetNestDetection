@@ -22,7 +22,7 @@ namespace Drones
             mapEdgeZ = MapGenerator.zSize + 2f;
             if (steps[0]) // raise up
             {
-                goUpBeginning(10f);
+                goUpBeginning(15f);
                 steps[0] = beginning;
                 steps[1] = goingIn;
             } 
@@ -67,7 +67,6 @@ namespace Drones
                 steps[1] = goingIn;
                 newPosAlreadySet = false;
             }
-            Debug.Log(drone.transform.position);
         }
         #endregion
     }
