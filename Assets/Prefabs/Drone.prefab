@@ -298,7 +298,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4653271609187136956}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &4653271609187136951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,7 +562,7 @@ MonoBehaviour:
   weight: 0.454
   minMaxPitch: 30
   minMaxRoll: 30
-  yawPower: 4
+  yawPower: 3
   lerpSpeed: 2
 --- !u!1001 &4653271608794525041
 PrefabInstance:

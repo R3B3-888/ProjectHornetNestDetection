@@ -45,18 +45,23 @@ namespace Drones
         {
             droneController.Input.Pedals = 0;
         }
+
+        protected void stopRolling()
+        {
+            Vector3 c = droneController.Input.Cyclic;
+            droneController.Input.Cyclic = new Vector3(0, c.y);
+        }
         #endregion
 
         #region Yaw Methods
         protected void turnAroundR(int degree)
         {
             stopTurning();
-            if(DroneController.Yaw < degree)
+            if (droneController.Yaw == degree)
+                Invoke("activateGoingBack", 2.5f);
+            else if(droneController.Yaw < degree)
                 turnRight();
-            else if (turningAroundR)
-            {
-                Invoke("activateGoingBack", 1.5f);
-            }
+            
         }
 
         protected void turnRight()
@@ -67,10 +72,10 @@ namespace Drones
         protected void turnAroundL(int degree)
         {
             stopTurning();
-            if(DroneController.Yaw > (-1*degree))
+            if (droneController.Yaw == degree)
+                Invoke("activateGoingIn", 2.5f);
+            else if(droneController.Yaw > (-1*degree))
                 turnLeft();
-            else
-                Invoke("activateGoingIn", 1.5f);
         }
 
         protected void turnLeft()
@@ -157,7 +162,13 @@ namespace Drones
             return true;
         }
 
-        private bool isNotHighEnough()
+        protected void adjustHeight()
+        {
+            if (isNotHighEnough())
+                droneController.Input.Throttle = 1;
+        }
+
+        protected bool isNotHighEnough()
         {
             RaycastHit hit;
             Vector3 direction = drone.transform.TransformDirection(Vector3.down);
@@ -177,12 +188,6 @@ namespace Drones
         {
             turningAroundL = false;
             goingIn = true;
-        }
-
-        protected void adjustHeight()
-        {
-            if (isNotHighEnough())
-                droneController.Input.Throttle = 1;
         }
     }
 }

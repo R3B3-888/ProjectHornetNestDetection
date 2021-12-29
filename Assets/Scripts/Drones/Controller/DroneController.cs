@@ -19,14 +19,14 @@ namespace Drones
         private DroneInputs input;
         private List<IEngine> engines = new List<IEngine>();
 
-        private static float yaw;
+        private float yaw;
         private float finalPitch;
         private float finalYaw;
 
         private float finalRoll;
 
         public DroneInputs Input { get => input; set => input = value; }
-        public static float Yaw { get => yaw; set => yaw = value; }
+        public float Yaw { get => yaw; set => yaw = value; }
 
         #endregion
 

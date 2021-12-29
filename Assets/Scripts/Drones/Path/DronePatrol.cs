@@ -22,7 +22,7 @@ namespace Drones
             mapEdgeZ = MapGenerator.zSize + 2f;
             if (steps[0]) // raise up
             {
-                goUpBeginning(15f);
+                goUpBeginning(20f);
                 steps[0] = beginning;
                 steps[1] = goingIn;
             } 
@@ -37,6 +37,7 @@ namespace Drones
                 }
                 goTo(positionWanted);
                 adjustHeight();
+                // isNotHighEnough();
                 steps[1] = goingIn;
                 steps[2] = turningAroundR;
             } 
@@ -57,6 +58,7 @@ namespace Drones
                 }
                 goTo(positionWanted);
                 adjustHeight();
+                // isNotHighEnough();
                 steps[3] = goingBack;
                 steps[4] = turningAroundL;
             }

@@ -52,7 +52,6 @@ MonoBehaviour:
   goingIn: 0
   goingBack: 0
   distanceMinDroneAndTrees: 20
-  mapEdgeZ: 102
 --- !u!1001 &3293273845754766464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60,30 +59,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3293273846185240067}
     m_Modifications:
+    - target: {fileID: 4653271608796427537, guid: 6d8f808eee5c05847915396a5a8ac427, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2d4cca00f0619e34e879d326167ef518, type: 2}
     - target: {fileID: 4653271608796427539, guid: 6d8f808eee5c05847915396a5a8ac427, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 2100000, guid: 5d55ba016d0e6294e88b46f613a17886, type: 2}
     - target: {fileID: 4653271608796427541, guid: 6d8f808eee5c05847915396a5a8ac427, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 2100000, guid: 5d55ba016d0e6294e88b46f613a17886, type: 2}
     - target: {fileID: 4653271608796427543, guid: 6d8f808eee5c05847915396a5a8ac427, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 2100000, guid: 5d55ba016d0e6294e88b46f613a17886, type: 2}
     - target: {fileID: 4653271608796427545, guid: 6d8f808eee5c05847915396a5a8ac427, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 2100000, guid: 5d55ba016d0e6294e88b46f613a17886, type: 2}
     - target: {fileID: 4653271608796427547, guid: 6d8f808eee5c05847915396a5a8ac427, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+      objectReference: {fileID: 2100000, guid: 5d55ba016d0e6294e88b46f613a17886, type: 2}
     - target: {fileID: 4653271608796427549, guid: 6d8f808eee5c05847915396a5a8ac427, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 2100000, guid: 7bfee2089e381d04b97104d1fbf1bf7e, type: 2}
     - target: {fileID: 4653271609522416842, guid: 6d8f808eee5c05847915396a5a8ac427, type: 3}
       propertyPath: m_Drag
       value: 2.5
