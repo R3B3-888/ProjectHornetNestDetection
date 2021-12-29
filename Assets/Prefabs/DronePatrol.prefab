@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3293273846185240064}
   m_Layer: 0
   m_Name: DronePatrol
-  m_TagString: Untagged
+  m_TagString: DronePatrol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3293273846185240065}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: -0.032999992, z: -10.1064}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7865451823953496139}
@@ -109,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4653271609522416843, guid: 6d8f808eee5c05847915396a5a8ac427, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4653271609522416843, guid: 6d8f808eee5c05847915396a5a8ac427, type: 3}
       propertyPath: m_LocalRotation.w

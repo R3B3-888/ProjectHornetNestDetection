@@ -5,18 +5,17 @@ using UnityEngine;
 public class DroneSpawner : MonoBehaviour
 {
     public GameObject drone;
-    [Range(1, 20)]
+    [Range(1, 50)]
     public int nbToSpawn;
     // TODO Serialize Drone Object with coord et position pour les 
     void Start()
     {
-        GameObject platerform = GameObject.Find("DroneSpawner");
-        GameObject platerformPlane = GameObject.Find("Plateform");
-        Vector3 platerformBounds = platerformPlane.GetComponent<MeshRenderer>().bounds.size;
+        Vector3 plateformOrigin = transform.position;
+        Vector3 platerformBounds = new Vector3(100,0,2);//platerformPlane.GetComponent<MeshRenderer>().bounds.size;
         for (var i = 0; i < nbToSpawn; i++)
         {
             GameObject d = Instantiate(drone);
-            d.transform.position = platerform.transform.position + new Vector3(platerformBounds.x * i/nbToSpawn, 0, platerformBounds.z/2);
+            d.transform.position = new Vector3(platerformBounds.x * i/nbToSpawn, 0, -2);
         }
     }
 }

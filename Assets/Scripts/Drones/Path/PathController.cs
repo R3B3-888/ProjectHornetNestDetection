@@ -61,7 +61,6 @@ namespace Drones
                 Invoke("activateGoingBack", 2.5f);
             else if(droneController.Yaw < degree)
                 turnRight();
-            
         }
 
         protected void turnRight()

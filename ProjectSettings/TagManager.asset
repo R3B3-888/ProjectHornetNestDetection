@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Nest
+  - DronePatrol
+  - DroneKiller
   layers:
   - Default
   - TransparentFX

@@ -37,7 +37,6 @@ namespace Drones
                 }
                 goTo(positionWanted);
                 adjustHeight();
-                // isNotHighEnough();
                 steps[1] = goingIn;
                 steps[2] = turningAroundR;
             } 
