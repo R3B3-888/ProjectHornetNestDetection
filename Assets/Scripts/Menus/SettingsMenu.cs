@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class SettingsMenu : MonoBehaviour
 {
@@ -10,6 +10,11 @@ public class SettingsMenu : MonoBehaviour
         SimulationMenu.pauseMenu.SetActive(true);
         SimulationMenu.settingsMenu.SetActive(false);
         // SceneManager.Load
+    }
+    public void Reload()
+    {
+        SceneManager.LoadScene("SimulationScene");
+        SceneManager.LoadScene("MenuScene");
     }
     // xSize
     // void SetTerrainWidth() {}

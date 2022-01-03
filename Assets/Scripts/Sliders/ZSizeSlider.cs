@@ -11,7 +11,7 @@ public class ZSizeSlider : MonoBehaviour
     {
         _zSizeSlider.onValueChanged.AddListener((v) => {
             _zSizeSliderText.text = v.ToString("0");
-            MapGenerator.zSize = (int) v;
+            DataBase.Settings.ZSize = (int) v;
         });
     }
 }

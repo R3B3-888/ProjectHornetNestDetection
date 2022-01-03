@@ -15,7 +15,6 @@ public class MapGenerator : MonoBehaviour
     private static GameObject nestObject;
 
     // modifiable by ui
-    public static int zSize = 100;
     public static int xSize = 100;
     [SerializeField] private static int seed;
     private static float scale = 50f;
@@ -55,7 +54,6 @@ public class MapGenerator : MonoBehaviour
 
     void Start()
     {
-        DataBase.Settings.XSize = xSize;
         heightCurve = AnimationCurve.Linear(0, 0, 1f, 1f);
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
@@ -69,7 +67,7 @@ public class MapGenerator : MonoBehaviour
     {
         if (!updateOn)
             return;
-        if (!DataBase.Settings.GamePause || (SimulationMenu.settingsMenu.activeInHierarchy && SimulationMenu.inInteractiveMode))
+        if (!DataBase.Settings.GamePause || (SimulationMenu.settingsMenu.activeInHierarchy && DataBase.Settings.InteractiveMode))
         {
             CreateNewMap();
             if (forestOn)
@@ -97,11 +95,11 @@ public class MapGenerator : MonoBehaviour
     {
         // seed
         Vector2[] octaveOffsets = GetOffsetSeed();
-        vertices_n = (xSize + 1) * (zSize + 1);
+        vertices_n = (DataBase.Settings.XSize + 1) * (DataBase.Settings.ZSize + 1);
         vertices = new Vector3[vertices_n];
-        for (int i = 0, z = 0; z <= zSize; z++)
+        for (int i = 0, z = 0; z <= DataBase.Settings.ZSize; z++)
         {
-            for (int x = 0; x <= xSize; x++, i++)
+            for (int x = 0; x <= DataBase.Settings.XSize; x++, i++)
             {
                 float y = GenerateNoiseHeight(z, x, octaveOffsets);
                 vertices[i] = new Vector3(x, y, z);
@@ -153,19 +151,19 @@ public class MapGenerator : MonoBehaviour
         int vert = 0;
         int tris = 0;
 
-        int nb_triangles = xSize * zSize * 6;
+        int nb_triangles = DataBase.Settings.XSize * DataBase.Settings.ZSize * 6;
         triangles = new int[nb_triangles];
 
-        for (var z = 0; z < zSize; z++)
+        for (var z = 0; z < DataBase.Settings.ZSize; z++)
         {
-            for (var x = 0; x < xSize; x++)
+            for (var x = 0; x < DataBase.Settings.XSize; x++)
             {
                 triangles[tris + 0] = vert + 0;
-                triangles[tris + 1] = vert + xSize + 1;
+                triangles[tris + 1] = vert + DataBase.Settings.XSize + 1;
                 triangles[tris + 2] = vert + 1;
                 triangles[tris + 3] = vert + 1;
-                triangles[tris + 4] = vert + xSize + 1;
-                triangles[tris + 5] = vert + xSize + 2;
+                triangles[tris + 4] = vert + DataBase.Settings.XSize + 1;
+                triangles[tris + 5] = vert + DataBase.Settings.XSize + 2;
 
                 vert++;
                 tris += 6;
@@ -204,9 +202,9 @@ public class MapGenerator : MonoBehaviour
         int separationNoiseMax = spaceBetweenTrees / 2;
         int separationNoiseMin = 0;
 
-        for (int x = 3; x <= xSize - 3; x += spaceBetweenTrees)
+        for (int x = 3; x <= DataBase.Settings.XSize - 3; x += spaceBetweenTrees)
         {
-            for (int z = 3; z <= zSize - 3; z += spaceBetweenTrees)
+            for (int z = 3; z <= DataBase.Settings.ZSize - 3; z += spaceBetweenTrees)
             {
                 int xOffset = x + UnityEngine.Random.Range(separationNoiseMin, separationNoiseMax);
                 int zOffset = z + UnityEngine.Random.Range(separationNoiseMin, separationNoiseMax);
@@ -224,7 +222,7 @@ public class MapGenerator : MonoBehaviour
     }
     private int verticeIndexFromXZ(int x, int z)
     {
-        return z * (xSize + 1) + x;
+        return z * (DataBase.Settings.XSize + 1) + x;
     }
 
     private Vector3 posTreeOnMap(int x, int z, Vector3 verticePos)

@@ -19,7 +19,7 @@ namespace Drones
         }
         void Update()
         {
-            mapEdgeZ = MapGenerator.zSize + 2f;
+            mapEdgeZ = DataBase.Settings.ZSize + 2f;
             if (steps[0]) // raise up
             {
                 goUpBeginning(20f);

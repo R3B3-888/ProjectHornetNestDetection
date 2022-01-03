@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class SimulationMenu : MonoBehaviour
 {
-    public static bool inInteractiveMode = false;
     public static GameObject pauseMenu, settingsMenu;
 
     private void Start()
@@ -29,11 +28,11 @@ public class SimulationMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             MapGenerator.UpdateOn ^= true;
-            inInteractiveMode ^= true;
+            DataBase.Settings.InteractiveMode ^= true;
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("SimulationScene");
+            Reload();
         }
     }
 
@@ -69,5 +68,10 @@ public class SimulationMenu : MonoBehaviour
     {
         Debug.Log("Quitting game...");
         Application.Quit();
+    }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene("SimulationScene");
     }
 }

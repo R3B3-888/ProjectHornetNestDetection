@@ -11,7 +11,7 @@ public class XSizeSlider : MonoBehaviour
     {
         _xSizeSlider.onValueChanged.AddListener((v) => {
             _xSizeSliderText.text = v.ToString("0");
-            MapGenerator.xSize = (int) v;
+            DataBase.Settings.XSize = (int) v;
         });
     }
 }
