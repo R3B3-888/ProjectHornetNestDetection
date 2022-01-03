@@ -55,6 +55,7 @@ public class MapGenerator : MonoBehaviour
 
     void Start()
     {
+        DataBase.Settings.XSize = xSize;
         heightCurve = AnimationCurve.Linear(0, 0, 1f, 1f);
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;

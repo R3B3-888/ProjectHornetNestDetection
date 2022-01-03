@@ -25,7 +25,7 @@ namespace DataBase
         #endregion
 
         #region Main Methods
-        void Start()
+        void Awake()
         {
             // gameBeginning = true;
             gameNestDiscovered = false;
