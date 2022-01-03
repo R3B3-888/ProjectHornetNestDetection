@@ -22,7 +22,6 @@ namespace Drones
         private float yaw;
         private float finalPitch;
         private float finalYaw;
-
         private float finalRoll;
 
         public DroneInputs Input { get => input; set => input = value; }
@@ -37,7 +36,7 @@ namespace Drones
             engines = GetComponentsInChildren<IEngine>().ToList<IEngine>();
         }
         #endregion
-        
+
         #region Custom Methods
         protected override void HandlePhysics()
         {
@@ -48,7 +47,6 @@ namespace Drones
 
         protected virtual void HandleEngines()
         {
-            
             foreach (var engine in engines)
                 engine.UpdateEngine(Rb, Input);
         }
