@@ -18,7 +18,6 @@ public class SimulationMenu : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.Escape))
         {
-                
             if(settingsMenu.activeInHierarchy)
                 SettingsMenu.OnClick_Back();
             else if(DataBase.Settings.GamePause)
@@ -27,7 +26,14 @@ public class SimulationMenu : MonoBehaviour
                 Pause();
         }
         if(Input.GetKeyDown(KeyCode.I))
+        {
+            MapGenerator.UpdateOn ^= true;
             inInteractiveMode ^= true;
+        }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("SimulationScene");
+        }
     }
 
     public void Resume()
@@ -35,6 +41,7 @@ public class SimulationMenu : MonoBehaviour
         DataBase.Settings.GamePause = false;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        MapGenerator.UpdateOn = false; 
     }
 
     public void Pause()

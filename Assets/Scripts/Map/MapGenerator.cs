@@ -25,7 +25,7 @@ public class MapGenerator : MonoBehaviour
     // TODO
     [SerializeField] private bool gizmosOn = false;
     [SerializeField] private bool forestOn = true;
-    [SerializeField] private bool updateOn = false;
+    [SerializeField] private static bool updateOn = false;
 
     // internal variables
     private Mesh mesh;
@@ -46,6 +46,7 @@ public class MapGenerator : MonoBehaviour
     public static float Lacunarity { get => lacunarity; set => lacunarity = value; }
     public static TreeWithNest TreeWithNest { get => treeWithNest; set => treeWithNest = value; }
     public static GameObject NestObject { get => nestObject; set => nestObject = value; }
+    public static bool UpdateOn { get => updateOn; set => updateOn = value; }
 
     // private ForestSpawner forestSpawner = new ForestSpawner(mesh);
     #endregion
@@ -54,35 +55,34 @@ public class MapGenerator : MonoBehaviour
 
     void Start()
     {
-        heightCurve = AnimationCurve.Linear(0,0,1f,1f);
+        heightCurve = AnimationCurve.Linear(0, 0, 1f, 1f);
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         CreateNewMap();
-        
+
         if (forestOn)
             SpawnForest();
-            SpawnNest();
+        SpawnNest();
     }
 
-    private void Update() {
-        
-    // if (PauseMenu.GameIsPaused)
-    //     // stuff to pause
-        if(!updateOn)
+    private void Update()
+    {
+        if (!updateOn)
             return;
         if (!DataBase.Settings.GamePause || (SimulationMenu.settingsMenu.activeInHierarchy && SimulationMenu.inInteractiveMode))
         {
             CreateNewMap();
-            if (forestOn) 
+            if (forestOn)
             {
                 UpdateTreesPos();
                 unhideTrees();
-            } else
+            }
+            else
                 hideTrees();
         }
     }
     #endregion
-    
+
     #region Mesh Methods
     public void CreateNewMap()
     {
@@ -92,16 +92,16 @@ public class MapGenerator : MonoBehaviour
         UpdateMesh();
     }
 
-    /******* MESH PART *******/ 
+    /******* MESH PART *******/
     private void CreateMeshShape()
     {
         // seed
         Vector2[] octaveOffsets = GetOffsetSeed();
-        vertices_n = (xSize+1) * (zSize+1);
+        vertices_n = (xSize + 1) * (zSize + 1);
         vertices = new Vector3[vertices_n];
         for (int i = 0, z = 0; z <= zSize; z++)
         {
-            for(int x = 0; x <= xSize; x++, i++)
+            for (int x = 0; x <= xSize; x++, i++)
             {
                 float y = GenerateNoiseHeight(z, x, octaveOffsets);
                 vertices[i] = new Vector3(x, y, z);
@@ -139,20 +139,20 @@ public class MapGenerator : MonoBehaviour
             float mapX = x / scale * frequency + octaveOffsets[y].x;
 
             // *2-1 flat floor level
-            float perlinValue = Mathf.PerlinNoise(mapX, mapZ)*2 -1;
-            noiseHeight += heightCurve.Evaluate(perlinValue) *  amplitude;
+            float perlinValue = Mathf.PerlinNoise(mapX, mapZ) * 2 - 1;
+            noiseHeight += heightCurve.Evaluate(perlinValue) * amplitude;
             frequency *= lacunarity;
             amplitude *= persistence;
         }
         return noiseHeight;
     }
 
-    private void  CreateTriangles() 
+    private void CreateTriangles()
     {
         int vert = 0;
         int tris = 0;
 
-        int nb_triangles = xSize*zSize*6;
+        int nb_triangles = xSize * zSize * 6;
         triangles = new int[nb_triangles];
 
         for (var z = 0; z < zSize; z++)
@@ -165,15 +165,15 @@ public class MapGenerator : MonoBehaviour
                 triangles[tris + 3] = vert + 1;
                 triangles[tris + 4] = vert + xSize + 1;
                 triangles[tris + 5] = vert + xSize + 2;
-                
+
                 vert++;
                 tris += 6;
             }
             vert++;
         }
     }
- 
-    void ColorMap() 
+
+    void ColorMap()
     {
         colors = new Color[vertices_n];
         for (int i = 0; i < vertices_n; i++)
@@ -198,37 +198,37 @@ public class MapGenerator : MonoBehaviour
     #endregion
 
     #region Trees Methods
-        private void SpawnForest()
+    private void SpawnForest()
     {
-        int separationNoiseMax = spaceBetweenTrees/2;
+        int separationNoiseMax = spaceBetweenTrees / 2;
         int separationNoiseMin = 0;
 
-        for (int x = 3; x <= xSize-3; x+=spaceBetweenTrees)
+        for (int x = 3; x <= xSize - 3; x += spaceBetweenTrees)
         {
-            for (int z = 3; z <= zSize-3; z+=spaceBetweenTrees)
+            for (int z = 3; z <= zSize - 3; z += spaceBetweenTrees)
             {
                 int xOffset = x + UnityEngine.Random.Range(separationNoiseMin, separationNoiseMax);
                 int zOffset = z + UnityEngine.Random.Range(separationNoiseMin, separationNoiseMax);
 
                 GameObject treeToSpawn = objects[UnityEngine.Random.Range(0, objects.Length)];
-                GameObject tree = Instantiate(treeToSpawn); 
+                GameObject tree = Instantiate(treeToSpawn);
 
-                Vector3 verticeWithTreeToSpawn = mesh.vertices[verticeIndexFromXZ(xOffset,zOffset)];
+                Vector3 verticeWithTreeToSpawn = mesh.vertices[verticeIndexFromXZ(xOffset, zOffset)];
                 tree.transform.position = posTreeOnMap(xOffset, zOffset, verticeWithTreeToSpawn);
 
-                tree.transform.rotation = Quaternion.AngleAxis(UnityEngine.Random.Range(0,360), Vector3.up);
+                tree.transform.rotation = Quaternion.AngleAxis(UnityEngine.Random.Range(0, 360), Vector3.up);
                 trees.Add(tree);
             }
         }
     }
     private int verticeIndexFromXZ(int x, int z)
     {
-        return z*(xSize+1) + x;
+        return z * (xSize + 1) + x;
     }
 
     private Vector3 posTreeOnMap(int x, int z, Vector3 verticePos)
     {
-        float y = transform.TransformPoint(verticePos).y -0.2f;
+        float y = transform.TransformPoint(verticePos).y - 0.2f;
         return new Vector3(x, y, z);
     }
 
@@ -246,15 +246,15 @@ public class MapGenerator : MonoBehaviour
         tn.update(trees[tn.Id]);
     }
 
-    private void SpawnNest() 
+    private void SpawnNest()
     {
-        int id = UnityEngine.Random.Range(0,trees.Count);
+        int id = UnityEngine.Random.Range(0, trees.Count);
         nestObject = Instantiate(nestPrefab);
         TreeWithNest tn = new TreeWithNest(id, trees[id], nestObject);
         treeWithNest = tn;
         Debug.Log(tn.toString());
     }
-    
+
     private void unhideTrees()
     {
         toggleTrees(true);
@@ -274,15 +274,16 @@ public class MapGenerator : MonoBehaviour
     }
     #endregion
 
-/******* GIZMOS PART *******/
-    private void OnDrawGizmos() {
+    /******* GIZMOS PART *******/
+    private void OnDrawGizmos()
+    {
         Gizmos.color = Color.black;
         if (vertices == null)
             return;
 
         if (gizmosOn)
-        for (var i = 0; i < vertices_n; i++)
-            Gizmos.DrawSphere(vertices[i], .1f); 
-        
+            for (var i = 0; i < vertices_n; i++)
+                Gizmos.DrawSphere(vertices[i], .1f);
+
     }
 }

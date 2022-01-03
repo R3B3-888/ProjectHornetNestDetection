@@ -112,6 +112,8 @@ namespace Drones
 
         protected void goToX(float xWanted)
         {
+            if (droneController.Input == null)
+                return;
             float x = drone.transform.position.x;
             float yCyclic = droneController.Input.Cyclic.y;
             if (x < xWanted-0.5f)
@@ -124,6 +126,8 @@ namespace Drones
 
         protected void goToY(float yWanted)
         {
+            if (droneController.Input == null)
+                return;
             float y = drone.transform.position.y;
             if (y < yWanted-0.25f)
                 droneController.Input.Throttle = 1;
@@ -135,6 +139,8 @@ namespace Drones
 
         protected void goToZ(float zWanted)
         {
+            if (droneController.Input == null)
+                return;
             var neg = goingBack ? -1: 1;
             float z = drone.transform.position.z;
             float xCyclic = droneController.Input.Cyclic.x;
