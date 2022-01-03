@@ -8,24 +8,22 @@ namespace Drones
     {
         #region Variables
         [SerializeField] protected GameObject drone;
-        [SerializeField] protected DroneController droneController;
-        [SerializeField] protected bool beginning;
-        [SerializeField] protected bool turningAroundR;
-        [SerializeField] protected bool turningAroundL;
-        [SerializeField] protected bool goingIn;
-        [SerializeField] protected bool goingBack;
+        protected DroneController droneController;
+        protected bool beginning;
+        protected bool turningAroundR;
+        protected bool turningAroundL;
+        protected bool goingIn;
+        protected bool goingBack;
         // protected Queue steps;
         protected Vector3 positionWanted;
         [Range(10, 20)]
-        public int distanceMinDroneAndTrees = 10;
+        [SerializeField] private int distanceMinDroneAndTrees = 10;
         #endregion
 
         #region Main Methods
         void Awake()
         {
             droneController = drone.GetComponent<DroneController>();
-            // steps = new Queue();
-            // steps.Enqueue(beginning);
             beginning = true;
             turningAroundR = false;
             turningAroundL = false;
@@ -35,21 +33,9 @@ namespace Drones
         #endregion
 
         #region Stop Methods
-        private void stopMovement()
-        {
-            droneController.Input.Cyclic = new Vector2(0,0);
-            stopTurning();
-            droneController.Input.Throttle = 0;
-        }
         protected void stopTurning()
         {
             droneController.Input.Pedals = 0;
-        }
-
-        protected void stopRolling()
-        {
-            Vector3 c = droneController.Input.Cyclic;
-            droneController.Input.Cyclic = new Vector3(0, c.y);
         }
         #endregion
 
@@ -59,7 +45,7 @@ namespace Drones
             stopTurning();
             if (droneController.Yaw == degree)
                 Invoke("activateGoingBack", 2.5f);
-            else if(droneController.Yaw < degree)
+            else if (droneController.Yaw < degree)
                 turnRight();
         }
 
@@ -73,7 +59,7 @@ namespace Drones
             stopTurning();
             if (droneController.Yaw == degree)
                 Invoke("activateGoingIn", 2.5f);
-            else if(droneController.Yaw > (-1*degree))
+            else if (droneController.Yaw > (-1 * degree))
                 turnLeft();
         }
 
@@ -87,15 +73,15 @@ namespace Drones
         protected void goUpBeginning(float yBeginning)
         {
             goToY(yBeginning);
-            if(drone.transform.position.y > (yBeginning-0.25) && 
-                drone.transform.position.y < (yBeginning+0.25))
+            if (drone.transform.position.y > (yBeginning - 0.25) &&
+                drone.transform.position.y < (yBeginning + 0.25))
             {
                 beginning = false;
                 goingIn = true;
             }
         }
 
-        protected void goTo(Vector3 posWanted) 
+        protected void goTo(Vector3 posWanted)
         {
             goToX(posWanted.x);
             goToY(posWanted.y);
@@ -106,7 +92,7 @@ namespace Drones
                 turningAroundR = true;
                 goingBack = false;
                 turningAroundL = true;
-            }    
+            }
 
         }
 
@@ -116,12 +102,12 @@ namespace Drones
                 return;
             float x = drone.transform.position.x;
             float yCyclic = droneController.Input.Cyclic.y;
-            if (x < xWanted-0.5f)
-                droneController.Input.Cyclic = new Vector2(1f,yCyclic);
-            else if (x > xWanted+0.5f)
+            if (x < xWanted - 0.5f)
+                droneController.Input.Cyclic = new Vector2(1f, yCyclic);
+            else if (x > xWanted + 0.5f)
                 droneController.Input.Cyclic = new Vector2(-1f, yCyclic);
             else
-                droneController.Input.Cyclic = new Vector2(0,yCyclic);
+                droneController.Input.Cyclic = new Vector2(0, yCyclic);
         }
 
         protected void goToY(float yWanted)
@@ -129,9 +115,9 @@ namespace Drones
             if (droneController.Input == null)
                 return;
             float y = drone.transform.position.y;
-            if (y < yWanted-0.25f)
+            if (y < yWanted - 0.25f)
                 droneController.Input.Throttle = 1;
-            else if (y > yWanted+0.25f)
+            else if (y > yWanted + 0.25f)
                 droneController.Input.Throttle = -1;
             else
                 droneController.Input.Throttle = 0;
@@ -141,17 +127,16 @@ namespace Drones
         {
             if (droneController.Input == null)
                 return;
-            var neg = goingBack ? -1: 1;
+            var neg = goingBack ? -1 : 1;
             float z = drone.transform.position.z;
             float xCyclic = droneController.Input.Cyclic.x;
-            if (z < zWanted-0.5f)
-                droneController.Input.Cyclic = new Vector2(xCyclic,neg*1f);
-            else if (z > zWanted+0.5f)
-                droneController.Input.Cyclic = new Vector2(xCyclic,neg*-1f);
+            if (z < zWanted - 0.5f)
+                droneController.Input.Cyclic = new Vector2(xCyclic, neg * 1f);
+            else if (z > zWanted + 0.5f)
+                droneController.Input.Cyclic = new Vector2(xCyclic, neg * -1f);
             else
                 droneController.Input.Cyclic = new Vector2(xCyclic, 0);
         }
-
         #endregion
 
         #region Check Methods
@@ -160,9 +145,9 @@ namespace Drones
             float x = drone.transform.position.x;
             float y = drone.transform.position.y;
             float z = drone.transform.position.z;
-            if ((y < posWanted.y-0.25f) || (y > posWanted.y+0.25f) ||
-                (z < posWanted.z-0.5f) || (z > posWanted.z+0.5f) ||
-                (x < posWanted.x-0.5f) || (x > posWanted.x+0.5f))
+            if ((y < posWanted.y - 0.25f) || (y > posWanted.y + 0.25f) ||
+                (z < posWanted.z - 0.5f) || (z > posWanted.z + 0.5f) ||
+                (x < posWanted.x - 0.5f) || (x > posWanted.x + 0.5f))
                 return false;
             return true;
         }
@@ -185,7 +170,7 @@ namespace Drones
 
         private void activateGoingBack()
         {
-            turningAroundR= false;
+            turningAroundR = false;
             goingBack = true;
         }
 

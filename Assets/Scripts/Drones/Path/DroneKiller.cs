@@ -16,21 +16,22 @@ namespace Drones
         #endregion
 
         #region Main Methods
-             
-        private void Start() {
+        private void Start()
+        {
             countdown = delay;
         }
         void Update()
         {
             if (!DataBase.Settings.GameNestDiscovered)
                 return;
-            if(beginning)
+            if (beginning)
                 goUpBeginning(20f);
             else if (goingIn)
             {
                 nestPosition = MapGenerator.TreeWithNest.Nest.transform.position;
                 goTo(new Vector3(nestPosition.x, 20f, nestPosition.z));
-            } else if (turningAroundR) // use of this var for the falling 
+            }
+            else if (turningAroundR) // use of this var for the falling 
             {
                 if (!hasExploded)
                     goToY(nestPosition.y);

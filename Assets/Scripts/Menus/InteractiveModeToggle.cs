@@ -14,7 +14,8 @@ public class InteractiveModeToggle : MonoBehaviour
         //Fetch the Toggle GameObject
         m_Toggle = GetComponent<Toggle>();
         //Add listener for when the state of the Toggle changes, to take action
-        m_Toggle.onValueChanged.AddListener(delegate {
+        m_Toggle.onValueChanged.AddListener(delegate
+        {
             ToggleValueChanged(m_Toggle);
         });
 
@@ -25,6 +26,6 @@ public class InteractiveModeToggle : MonoBehaviour
     //Output the new state of the Toggle into Text
     void ToggleValueChanged(Toggle change)
     {
-        m_Text.text =  "New Value : " + m_Toggle.isOn;
+        m_Text.text = "New Value : " + m_Toggle.isOn;
     }
 }

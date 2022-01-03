@@ -3643,7 +3643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drone: {fileID: 3293273846185240065, guid: 48915bab165380647865198ca18f5e10, type: 3}
-  nbToSpawn: 12
+  nbToSpawn: 50
 --- !u!4 &1096338839
 Transform:
   m_ObjectHideFlags: 0

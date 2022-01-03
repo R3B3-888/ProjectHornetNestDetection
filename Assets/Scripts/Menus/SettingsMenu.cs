@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public static void OnClick_Back() 
+    public static void OnClick_Back()
     {
         SimulationMenu.pauseMenu.SetActive(true);
         SimulationMenu.settingsMenu.SetActive(false);
@@ -20,5 +20,5 @@ public class SettingsMenu : MonoBehaviour
     // void SetForestSize() {}
     // void SetSpaceBetweenTrees() {}
     // void SetNestNumber() {}
-    
+
 }

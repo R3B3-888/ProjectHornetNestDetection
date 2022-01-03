@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void OnClick_LoadSimulationScene() 
+    public void OnClick_LoadSimulationScene()
     {
         SceneManager.LoadScene("SimulationScene");
     }
 
-    public void OnClick_Settings() 
+    public void OnClick_Settings()
     {
         MenuManager.OpenMenu(Menu.SETTINGS, gameObject);
     }

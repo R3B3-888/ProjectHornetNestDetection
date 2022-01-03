@@ -14,7 +14,7 @@ namespace Drones
         [SerializeField] private Transform propeller;
         [SerializeField] private float baseRotationSpeed = 50f;
         private Vector3 engineForce;
-        
+
         #endregion
 
         #region Interface Methods
@@ -38,7 +38,7 @@ namespace Drones
 
         void HandlePropeller()
         {
-            if(!propeller)
+            if (!propeller)
                 return;
             float rotationSpeed = baseRotationSpeed * (this.engineForce.x + this.engineForce.y + this.engineForce.z);
             propeller.Rotate(Vector3.up, rotationSpeed);

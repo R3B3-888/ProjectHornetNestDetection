@@ -30,7 +30,7 @@ namespace Drones
             {
                 if(!newPosAlreadySet)
                 {
-                    // TODO : offset banc décollage
+                    // TODO : offset banc décollage IEnumerate
                     positionWanted = drone.transform.position;
                     positionWanted.z += mapEdgeZ;
                     newPosAlreadySet = true;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DroneSettingsMenu : MonoBehaviour
 {
-    public void OnClick_Back() 
+    public void OnClick_Back()
     {
         MenuManager.OpenMenu(Menu.MAIN_MENU, gameObject);
     }

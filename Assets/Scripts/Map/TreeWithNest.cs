@@ -14,9 +14,9 @@ public class TreeWithNest
     private float depthOffset = 1.0f;
     #endregion
 
-    #region Getter And Setter
-    public int Id { get => id; set => id = value; }
-    public GameObject Nest { get => nest; set => nest = value; }
+    #region Getters
+    public int Id { get => id; }
+    public GameObject Nest { get => nest; }
     #endregion
 
     public TreeWithNest(int id, GameObject tree, GameObject nest)

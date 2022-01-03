@@ -19,7 +19,7 @@ namespace Map
                 droneKiller.SetActive(false);
         }
         #endregion
-        
+
         #region Trigger Methods
         private void OnTriggerEnter(Collider other)
         {

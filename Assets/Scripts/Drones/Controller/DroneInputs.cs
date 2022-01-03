@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine; 
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Drones
 {
     [RequireComponent(typeof(PlayerInput))]
-    public class  DroneInputs : MonoBehaviour
+    public class DroneInputs : MonoBehaviour
     {
         #region Variables
         private Vector2 cyclic;
@@ -21,13 +21,13 @@ namespace Drones
         #region Main Methods
         void Start()
         {
-            
+
         }
 
         // Update is called once per frame
         void Update()
         {
-            
+
         }
         #endregion
 
