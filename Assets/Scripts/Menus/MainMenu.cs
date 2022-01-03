@@ -15,4 +15,9 @@ public class MainMenu : MonoBehaviour
         MenuManager.OpenMenu(Menu.SETTINGS, gameObject);
     }
 
+    public void OnClick_SandBoxScene()
+    {
+        SceneManager.LoadScene("SandBoxScene");
+    }
+
 }
