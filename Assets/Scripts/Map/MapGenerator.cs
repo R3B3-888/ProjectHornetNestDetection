@@ -59,7 +59,6 @@ public class MapGenerator : MonoBehaviour
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         CreateNewMap();
-
         if (forestOn)
             SpawnForest();
         SpawnNest();
@@ -111,6 +110,7 @@ public class MapGenerator : MonoBehaviour
                     yMinTerrain = y;
             }
         }
+        DataBase.Settings.MaxHeight = yMaxTerrain + 15f;
     }
 
     private Vector2[] GetOffsetSeed()

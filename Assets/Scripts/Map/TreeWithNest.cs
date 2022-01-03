@@ -36,6 +36,7 @@ public class TreeWithNest
         z = tree.transform.position.z;
         nest.transform.position = new Vector3(x, y + treeSize.y * 5 / 6 * depthOffset, z);
         // nest.transform.position = new Vector3(50, 9, 10);
+        DataBase.Settings.NestPosition = nest.transform.position;
     }
 
     public string toString()

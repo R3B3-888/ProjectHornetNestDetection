@@ -7,7 +7,6 @@ namespace Drones
     public class DroneKiller : PathController
     {
         #region Variables
-        private Vector3 nestPosition;
         [SerializeField] private float delay = 3f;
         private float countdown;
         private bool hasExploded = false;
@@ -25,16 +24,15 @@ namespace Drones
             if (!DataBase.Settings.GameNestDiscovered)
                 return;
             if (beginning)
-                goUpBeginning(20f);
+                goUpBeginning(DataBase.Settings.MaxHeight);
             else if (goingIn)
             {
-                nestPosition = MapGenerator.TreeWithNest.Nest.transform.position;
-                goTo(new Vector3(nestPosition.x, 20f, nestPosition.z));
+                goTo(new Vector3(DataBase.Settings.NestPosition.x, DataBase.Settings.MaxHeight, DataBase.Settings.NestPosition.z));
             }
             else if (turningAroundR) // use of this var for the falling 
             {
                 if (!hasExploded)
-                    goToY(nestPosition.y);
+                    goToY(DataBase.Settings.NestPosition.y);
                 countdown -= Time.deltaTime;
                 if (countdown <= 0f && !hasExploded)
                 {

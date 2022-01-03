@@ -5,7 +5,7 @@ using UnityEngine;
 public class DroneSpawner : MonoBehaviour
 {
     public GameObject drone;
-    [Range(1, 50)]
+    [Range(1, 80)]
     public int nbToSpawn;
     // TODO Serialize Drone
     void Start()
