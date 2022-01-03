@@ -8,25 +8,30 @@ namespace Map
     {
         #region Variables
         public GameObject droneKiller;
-        
+
         #endregion
 
         #region Main Methods
-        private void Start() {
+        private void Start()
+        {
             droneKiller = GameObject.Find("DroneKiller");
-            if (droneKiller)
+            if (droneKiller && !DataBase.Settings.GameNestDiscovered)
                 droneKiller.SetActive(false);
         }
-        private void OnTriggerEnter(Collider other) {
+        #endregion
+        
+        #region Trigger Methods
+        private void OnTriggerEnter(Collider other)
+        {
             Debug.Log("Nest triggered");
-            if (droneKiller)
-                droneKiller.SetActive(true);
         }
 
-        private void OnTriggerExit(Collider other) {
+        private void OnTriggerExit(Collider other)
+        {
             Debug.Log("Nest triggered exited");
+            droneKiller.SetActive(true);
+            DataBase.Settings.GameNestDiscovered = true;
         }
         #endregion
-
     }
 }

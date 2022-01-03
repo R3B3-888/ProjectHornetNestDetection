@@ -22,7 +22,8 @@ namespace Drones
         }
         void Update()
         {
-            
+            if (!DataBase.Settings.GameNestDiscovered)
+                return;
             if(beginning)
                 goUpBeginning(20f);
             else if (goingIn)

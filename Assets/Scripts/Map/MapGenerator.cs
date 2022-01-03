@@ -70,7 +70,7 @@ public class MapGenerator : MonoBehaviour
     //     // stuff to pause
         if(!updateOn)
             return;
-        if (!SimulationMenu.isGamePaused || (SimulationMenu.settingsMenu.activeInHierarchy && SimulationMenu.inInteractiveMode))
+        if (!DataBase.Settings.GamePause || (SimulationMenu.settingsMenu.activeInHierarchy && SimulationMenu.inInteractiveMode))
         {
             CreateNewMap();
             if (forestOn) 

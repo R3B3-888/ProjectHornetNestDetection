@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SimulationMenu : MonoBehaviour
 {
-    public static bool isGamePaused = false, inInteractiveMode = false;
+    public static bool inInteractiveMode = false;
     public static GameObject pauseMenu, settingsMenu;
 
     private void Start() {
@@ -21,7 +21,7 @@ public class SimulationMenu : MonoBehaviour
                 
             if(settingsMenu.activeInHierarchy)
                 SettingsMenu.OnClick_Back();
-            else if(isGamePaused)
+            else if(DataBase.Settings.GamePause)
                 Resume(); 
             else
                 Pause();
@@ -32,14 +32,14 @@ public class SimulationMenu : MonoBehaviour
 
     public void Resume()
     {
-        isGamePaused = false;
+        DataBase.Settings.GamePause = false;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
     }
 
     public void Pause()
     {
-        isGamePaused = true;
+        DataBase.Settings.GamePause = true;
         Time.timeScale = 0f; // freeze time
         pauseMenu.SetActive(true);
     }
