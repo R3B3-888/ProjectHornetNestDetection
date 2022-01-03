@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Drones 
+namespace Drones
 {
     [RequireComponent(typeof(Rigidbody))]
     public class BaseRigibody : MonoBehaviour
@@ -18,21 +18,21 @@ namespace Drones
         #endregion
 
         #region Main Methods
-        private void Awake() {
+        private void Awake()
+        {
             rb = GetComponent<Rigidbody>();
-            if(rb) 
+            if (rb)
             {
                 rb.mass = weight;
                 startDrag = rb.drag;
                 startAngularDrag = rb.angularDrag;
             }
-            
         }
-        private void FixedUpdate() 
+        private void FixedUpdate()
         {
             if (!rb)
                 return;
-            HandlePhysics();    
+            HandlePhysics();
         }
         #endregion
 
