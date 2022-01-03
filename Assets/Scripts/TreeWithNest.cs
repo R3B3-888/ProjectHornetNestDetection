@@ -3,6 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class TreeWithNest
 {
+    #region Variables
+         
     private int id;
     private GameObject nest;
     private GameObject tree;
@@ -12,6 +14,9 @@ public class TreeWithNest
     private float z;
     private float depthOffset = 1.0f;
 
+    #endregion
+    
+    #region Getter And Setter
     public int Id { get => id; set => id = value; }
     public GameObject Nest { get => nest; set => nest = value; }
     public GameObject Tree { get => tree; set => tree = value; }
@@ -19,18 +24,13 @@ public class TreeWithNest
     public float X { get => x; set => x = value; }
     public float Y { get => y; set => y = value; }
     public float Z { get => z; set => z = value; }
+    #endregion
 
     public TreeWithNest(int id, GameObject tree, GameObject nest)
     {
         this.id = id;
-        // nest = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         this.nest = nest;
-        // nest.gameObject.name = "Nest";
-        // CapsuleCollider nestCollider = nest.GetComponent<CapsuleCollider>();
-        // nestCollider.center = new Vector3(0, 20f, 0);
-        // nestCollider.height = 40f;
-        // nestCollider.isTrigger = true;
-        // nest.GetComponent<Renderer>().material.color = Color.yellow;
+        nest.gameObject.name = "Nest";
         treeSize =  tree.GetComponent<MeshRenderer>().bounds.size;
         update(tree);
     }
@@ -41,8 +41,8 @@ public class TreeWithNest
         x = tree.transform.position.x;
         y = tree.transform.position.y;
         z = tree.transform.position.z;
-        // nest.transform.position = new Vector3(x, y + treeSize.y * 5/6 * depthOffset, z);
-        nest.transform.position = new Vector3(50, 9, 10);
+        nest.transform.position = new Vector3(x, y + treeSize.y * 5/6 * depthOffset, z);
+        // nest.transform.position = new Vector3(50, 9, 10);
     }
 
     public string toString()

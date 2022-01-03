@@ -12,6 +12,7 @@ public class MapGenerator : MonoBehaviour
     public GameObject[] objects;
     public GameObject nestPrefab;
     [SerializeField] private Gradient gradient;
+    private static GameObject nestObject;
 
     // modifiable by ui
     public static int zSize = 100;
@@ -44,6 +45,7 @@ public class MapGenerator : MonoBehaviour
     public static float Scale { get => scale; set => scale = value; }
     public static float Lacunarity { get => lacunarity; set => lacunarity = value; }
     public static TreeWithNest TreeWithNest { get => treeWithNest; set => treeWithNest = value; }
+    public static GameObject NestObject { get => nestObject; set => nestObject = value; }
 
     // private ForestSpawner forestSpawner = new ForestSpawner(mesh);
     #endregion
@@ -247,8 +249,8 @@ public class MapGenerator : MonoBehaviour
     private void SpawnNest() 
     {
         int id = UnityEngine.Random.Range(0,trees.Count);
-        GameObject nest = Instantiate(nestPrefab);
-        TreeWithNest tn = new TreeWithNest(id, trees[id], nest);
+        nestObject = Instantiate(nestPrefab);
+        TreeWithNest tn = new TreeWithNest(id, trees[id], nestObject);
         treeWithNest = tn;
         Debug.Log(tn.toString());
     }
