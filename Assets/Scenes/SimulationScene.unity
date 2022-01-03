@@ -3643,7 +3643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drone: {fileID: 3293273846185240065, guid: 48915bab165380647865198ca18f5e10, type: 3}
-  nbToSpawn: 20
+  nbToSpawn: 2
 --- !u!4 &1096338839
 Transform:
   m_ObjectHideFlags: 0
@@ -6366,6 +6366,10 @@ PrefabInstance:
     - target: {fileID: 1123433563913712569, guid: 297b9f2a4f1193c4db253d6871692b37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946061959994128141, guid: 297b9f2a4f1193c4db253d6871692b37, type: 3}
+      propertyPath: explosionEffect
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 297b9f2a4f1193c4db253d6871692b37, type: 3}
