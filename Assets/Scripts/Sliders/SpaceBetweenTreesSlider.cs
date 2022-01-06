@@ -11,7 +11,7 @@ public class SpaceBetweenTreesSlider : MonoBehaviour
     {
         _spaceBetweenTreesSlider.onValueChanged.AddListener((v) => {
             _spaceBetweenTreesSliderText.text = v.ToString("0");
-            // MapGenerator.SpaceBetweenTrees = (int) v;
+            DataBase.Settings.SpaceBetweenTrees = (int) v;
         });
     }
 }

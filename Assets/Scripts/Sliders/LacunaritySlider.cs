@@ -10,7 +10,7 @@ public class LacunaritySlider : MonoBehaviour
     {
         _lacunaritySlider.onValueChanged.AddListener((v) => {
             _lacunaritySliderText.text = v.ToString("0");
-            MapGenerator.Lacunarity = v;
+            DataBase.Settings.Lacunarity = v;
         });
     }
 }

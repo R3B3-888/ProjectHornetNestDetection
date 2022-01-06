@@ -12,8 +12,12 @@ namespace DataBase
         private static bool gamePause;
         private static int xSize = 100;
         private static int zSize = 100;
+        private static int spaceBetweenTrees = 4;
         private static int nbDronesToSpawn = 10;
+        private static int meshSeed = 63;
         private static float maxHeight;
+        private static float lacunarity = 2f;
+        private static float scale = 50f;
         private static Vector3 nestPosition;
         private static bool interactiveMode = false;
         #endregion
@@ -27,6 +31,10 @@ namespace DataBase
         public static Vector3 NestPosition { get => nestPosition; set => nestPosition = value; }
         public static bool InteractiveMode { get => interactiveMode; set => interactiveMode = value; }
         public static int NbDronesToSpawn { get => nbDronesToSpawn; set => nbDronesToSpawn = value; }
+        public static int SpaceBetweenTrees { get => spaceBetweenTrees; set => spaceBetweenTrees = value; }
+        public static float Lacunarity { get => lacunarity; set => lacunarity = value; }
+        public static int MeshSeed { get => meshSeed; set => meshSeed = value; }
+        public static float Scale { get => scale; set => scale = value; }
 
 
         #endregion

@@ -10,7 +10,7 @@ public class ScaleSlider : MonoBehaviour
     {
         _scaleSlider.onValueChanged.AddListener((v) => {
             _scaleSliderText.text = v.ToString("0");
-            MapGenerator.Scale = v;
+            DataBase.Settings.Scale = v;
         });
     }
 }

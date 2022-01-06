@@ -14,13 +14,6 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private Gradient gradient;
     private static GameObject nestObject;
 
-    // modifiable by ui
-    public static int xSize = 100;
-    [SerializeField] private static int seed;
-    private static float scale = 50f;
-    private static float lacunarity = 2;
-    public int spaceBetweenTrees = 3;
-
     // TODO
     [SerializeField] private bool gizmosOn = false;
     [SerializeField] private bool forestOn = true;
@@ -39,10 +32,6 @@ public class MapGenerator : MonoBehaviour
     private float yMinTerrain, yMaxTerrain;
     private List<GameObject> trees = new List<GameObject>();
     public static TreeWithNest treeWithNest;
-
-    public static int Seed { get => seed; set => seed = value; }
-    public static float Scale { get => scale; set => scale = value; }
-    public static float Lacunarity { get => lacunarity; set => lacunarity = value; }
     public static TreeWithNest TreeWithNest { get => treeWithNest; set => treeWithNest = value; }
     public static GameObject NestObject { get => nestObject; set => nestObject = value; }
     public static bool UpdateOn { get => updateOn; set => updateOn = value; }
@@ -114,7 +103,7 @@ public class MapGenerator : MonoBehaviour
 
     private Vector2[] GetOffsetSeed()
     {
-        prng = new System.Random(seed);
+        prng = new System.Random(DataBase.Settings.MeshSeed);
         octaveOffsets = new Vector2[octaves];
         for (var i = 0; i < octaves; i++)
         {
@@ -134,13 +123,13 @@ public class MapGenerator : MonoBehaviour
 
         for (var y = 0; y < octaves; y++)
         {
-            float mapZ = z / scale * frequency + octaveOffsets[y].y;
-            float mapX = x / scale * frequency + octaveOffsets[y].x;
+            float mapZ = z / DataBase.Settings.Scale * frequency + octaveOffsets[y].y;
+            float mapX = x / DataBase.Settings.Scale * frequency + octaveOffsets[y].x;
 
             // *2-1 flat floor level
             float perlinValue = Mathf.PerlinNoise(mapX, mapZ) * 2 - 1;
             noiseHeight += heightCurve.Evaluate(perlinValue) * amplitude;
-            frequency *= lacunarity;
+            frequency *= DataBase.Settings.Lacunarity;
             amplitude *= persistence;
         }
         return noiseHeight;
@@ -199,12 +188,12 @@ public class MapGenerator : MonoBehaviour
     #region Trees Methods
     private void SpawnForest()
     {
-        int separationNoiseMax = spaceBetweenTrees / 2;
+        int separationNoiseMax = DataBase.Settings.SpaceBetweenTrees / 2;
         int separationNoiseMin = 0;
 
-        for (int x = 3; x <= DataBase.Settings.XSize - 3; x += spaceBetweenTrees)
+        for (int x = 3; x <= DataBase.Settings.XSize - 3; x += DataBase.Settings.SpaceBetweenTrees)
         {
-            for (int z = 3; z <= DataBase.Settings.ZSize - 3; z += spaceBetweenTrees)
+            for (int z = 3; z <= DataBase.Settings.ZSize - 3; z += DataBase.Settings.SpaceBetweenTrees)
             {
                 int xOffset = x + UnityEngine.Random.Range(separationNoiseMin, separationNoiseMax);
                 int zOffset = z + UnityEngine.Random.Range(separationNoiseMin, separationNoiseMax);

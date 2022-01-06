@@ -15,8 +15,10 @@ Fin.
 
 ## Explication d'au moins un concept de Unity
 
-Le concept que je tenais à expliquer était celui de la génération de terrain dite procédural
+Le concept que je tenais à expliquer était celui de la génération de terrain dite procédural.
 Triangles, vertices, lacunarity
+Pour avoir un terrain, il faut de nombreux carrés. Pour faire un carré, il faut 2 triangles. Les sommets des triangles sont appelés vertices.
+Avec des hauteurs variantes sur les vertices on arrive à obtenir du volume sur le terrain. 
 
 ## Description projet (cf projet boids)
 

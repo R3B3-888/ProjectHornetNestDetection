@@ -11,7 +11,7 @@ public class SeedSlider : MonoBehaviour
     {
         _seedSlider.onValueChanged.AddListener((v) => {
             _seedSliderText.text = v.ToString("0");
-            MapGenerator.Seed = (int) v;
+            DataBase.Settings.MeshSeed = (int) v;
         });
     }
 }
