@@ -18,32 +18,10 @@ namespace Drones
         public float Throttle { get => throttle; set => throttle = value; }
         #endregion
 
-        #region Main Methods
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-        #endregion
-
         #region Input Methods
-        private void OnCyclic(InputValue v)
-        {
-            cyclic = v.Get<Vector2>();
-        }
-        private void OnPedals(InputValue v)
-        {
-            pedals = v.Get<float>();
-        }
-        private void OnThrottle(InputValue v)
-        {
-            throttle = v.Get<float>();
-        }
+        private void OnCyclic(InputValue v) => cyclic = v.Get<Vector2>();
+        private void OnPedals(InputValue v) => pedals = v.Get<float>();
+        private void OnThrottle(InputValue v) => throttle = v.Get<float>();
         #endregion
     }
 }

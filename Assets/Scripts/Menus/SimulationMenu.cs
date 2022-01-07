@@ -32,6 +32,7 @@ public class SimulationMenu : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
+            Resume();
             Reload();
         }
     }
