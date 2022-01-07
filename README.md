@@ -54,31 +54,30 @@ Avec des hauteurs variantes sur les vertices on arrive à obtenir du volume sur 
   - drone tueur
 
 - Liste des scripts et affectation à quel GameObject
-    [MapGenerator.cs](Assets/Scripts/MapGenerator.cs)
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    [.cs](Assets/Scripts/)    
-    
-
+  - [MapGenerator.cs](Assets/Scripts/MapGenerator.cs) associé à un EmptyGameObject, fait spawn les arbres, le mesh et créé la ruche avec son arbre
+  - [Settings.cs](Assets/Scripts/Settings.cs) associé à l'antenne, sert de base de donnée dans l'architecture
+  - [MainMenu.cs](Assets/Scripts/Menus/MainMenu.cs) associé au menu principal pour les boutons de `sandbox` et `simulation`
+  - [SimulationMenu.cs](Assets/Scripts/Menus/SimulationMenu.cs) associé au menu de pause de la simulation, redirige vers le menu principal, celui des reglages, fait reprendre la simulation ou bien quitte le jeu
+  - [SandBoxMenu.cs](Assets/Scripts/Menus/SandBoxMenu.cs) associé au menu du bac à sable permettant de rejoindre le menu principal et de reprendre la manipulation du drone
+  - [SettingsMenu.cs](Assets/Scripts/Menus/SettingsMenu.cs) associé au menu des paramètres et permet de retourner au menu précédant, le reload n'étant pas au point.
+  - [Dossier Sliders](Assets/Scripts/Sliders) associés aux sliders dans le menu de paramètres
+  - [DroneSpawner.cs](Assets/Scripts/Drones/DroneSpawner.cs) associé à la platerforme de spawn des drones, et d'après un nombre de drones défini par l'utilisateur, fait spawn ce nombre
+  - [PathController.cs](Assets/Scripts/Drones/Path/PathController.cs)
+  - [DronePatrol.cs](Assets/Scripts/Drones/Path/DronePatrol.cs)
+  - [DroneKiller.cs](Assets/Scripts/Drones/Path/DroneKiller.cs)
+  - [DroneInputs.cs](Assets/Scripts/Drones/Controller/DroneInputs.cs)
+  - [DroneController.cs](Assets/Scripts/Drones/Controller/DroneController.cs)
+  
 - comment une entité répond à la "rencontre" d'une autre entité (tir ? (quelle portée ? qu'est ce qui est détruit ? qui tire (toutes les entités d'un groupe ou uniquement celles qui ne détectent pas une entité amie devant elle) fuite ? séparation du groupe ? certaines entités tirent et les autres se tirent ? (désolée pour le mauvais jeu de mot) combinaison de tout ça ? récupération d'entités adverses ?) 
 
 
 - la façon de les spawn dans l'environnement
   
 
-- la façon de gérer les collisions 
+- la façon de gérer les collisions :
+  Mesh collider sur les arbres et la map
+  Sphere et box collider sur les drones donc il y a des collisions physiques entre tout les objets physiques
+  Sauf entre la hitbox de la ruche qui est une sphere collider avec isTrigger activé.s
 
 
 - Liste de ce que vous vous êtes amusés à faire en plus et que vous voulez valoriser 
