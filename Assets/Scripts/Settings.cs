@@ -8,18 +8,12 @@ namespace DataBase
     {
         #region Variables
         // private static bool gameBeginning;
-        private static bool gameNestDiscovered;
-        private static bool gamePause;
-        private static int xSize = 100;
-        private static int zSize = 100;
-        private static int spaceBetweenTrees = 4;
-        private static int nbDronesToSpawn = 10;
-        private static int meshSeed = 63;
-        private static float maxHeight;
-        private static float lacunarity = 2f;
-        private static float scale = 50f;
+        private static bool gameNestDiscovered, gamePause, interactiveMode = false;
+        private static int xSize = 100, zSize = 100, spaceBetweenTrees = 4, nbDronesToSpawn = 10, meshSeed = 63;
+        private static float maxHeight, lacunarity = 2f, scale = 50f;
         private static Vector3 nestPosition;
-        private static bool interactiveMode = false;
+        public enum UISettingsInt { ZSize, XSize, SpaceBetweenTrees, NbDronesToSpawn, MeshSeed }
+        public enum UISettingsFloat { Lacunarity, Scale }
         #endregion
 
         #region Getter Setter
@@ -36,6 +30,73 @@ namespace DataBase
         public static int MeshSeed { get => meshSeed; set => meshSeed = value; }
         public static float Scale { get => scale; set => scale = value; }
 
+        public static int GetValue(UISettingsInt settings)
+        {
+            switch (settings)
+            {
+                case UISettingsInt.XSize:
+                    return XSize;
+                case UISettingsInt.ZSize:
+                    return ZSize;
+                case UISettingsInt.SpaceBetweenTrees:
+                    return SpaceBetweenTrees;
+                case UISettingsInt.NbDronesToSpawn:
+                    return NbDronesToSpawn;
+                case UISettingsInt.MeshSeed:
+                    return MeshSeed;
+                default:
+                    return 0;
+            }
+        }
+        public static float GetValue(UISettingsFloat setting)
+        {
+            switch (setting)
+            {
+                case UISettingsFloat.Lacunarity:
+                    return Lacunarity;
+                case UISettingsFloat.Scale:
+                    return Scale;
+                default:
+                    return 0f;
+            }
+        }
+        public static void SetValue(UISettingsInt setting, int v)
+        {
+            switch (setting)
+            {
+                case UISettingsInt.XSize:
+                    xSize = v;
+                    break;
+                case UISettingsInt.ZSize:
+                    zSize = v;
+                    break;
+                case UISettingsInt.SpaceBetweenTrees:
+                    spaceBetweenTrees = v;
+                    break;
+                case UISettingsInt.NbDronesToSpawn:
+                    nbDronesToSpawn = v;
+                    break;
+                case UISettingsInt.MeshSeed:
+                    meshSeed = v;
+                    break;
+                default:
+                    break;
+            }
+        }
+        public static void SetValue(UISettingsFloat setting, float v)
+        {
+            switch (setting)
+            {
+                case UISettingsFloat.Lacunarity:
+                    Lacunarity = v;
+                    break;
+                case UISettingsFloat.Scale:
+                    Scale = v;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         #endregion
 
