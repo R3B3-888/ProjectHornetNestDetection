@@ -137,6 +137,12 @@ namespace Drones
             else
                 droneController.Input.Cyclic = new Vector2(xCyclic, 0);
         }
+
+        protected void goToOptimized(Vector3 posWanted)
+        {
+            Vector3 droneCurrentPos = drone.transform.position;
+            Debug.Log(droneCurrentPos);
+        }
         #endregion
 
         #region Check Methods
@@ -164,6 +170,8 @@ namespace Drones
             Vector3 direction = drone.transform.TransformDirection(Vector3.down);
             direction.z *= -1;
             Debug.DrawRay(drone.transform.position, direction * distanceMinDroneAndTrees, Color.red);
+            // Vector3 detection = drone.transform.TransformDirection(Vector3.forward);
+            // Debug.DrawRay(drone.transform.position, detection * distanceMinDroneAndTrees * 2, Color.cyan);
             return Physics.Raycast(drone.transform.position, direction, out hit, distanceMinDroneAndTrees);
         }
         #endregion
