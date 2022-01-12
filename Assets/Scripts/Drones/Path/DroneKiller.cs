@@ -12,6 +12,7 @@ namespace Drones
         private bool hasExploded = false;
         [SerializeField] private GameObject explosionEffect;
         private GameObject explosionObject;
+        private bool nestPosAlreadySet;
         #endregion
 
         #region Main Methods
@@ -27,7 +28,8 @@ namespace Drones
                 goUpBeginning(DataBase.Settings.MaxHeight);
             else if (goingIn)
             {
-                goTo(new Vector3(DataBase.Settings.NestPosition.x, DataBase.Settings.MaxHeight, DataBase.Settings.NestPosition.z));
+                Vector3 posWanted = new Vector3(DataBase.Settings.NestPosition.x, DataBase.Settings.MaxHeight, DataBase.Settings.NestPosition.z);
+                goTo(posWanted);
             }
             else if (turningAroundR) // use of this var for the falling 
             {

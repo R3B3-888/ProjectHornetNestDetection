@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class SimulationMenu : MonoBehaviour
 {
-    public static GameObject pauseMenu, settingsMenu;
+    public static GameObject pauseMenu, settingsMenu, minimap;
 
     private void Start()
     {
         GameObject canvas = GameObject.Find("Canvas");
         pauseMenu = canvas.transform.Find("PauseMenu").gameObject;
         settingsMenu = canvas.transform.Find("SettingsMenu").gameObject;
+        minimap = canvas.transform.Find("Minimap").gameObject;
     }
     void Update()
     {
@@ -43,10 +44,12 @@ public class SimulationMenu : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         MapGenerator.UpdateOn = false;
+        minimap.SetActive(true);
     }
 
     public void Pause()
     {
+        minimap.SetActive(false);
         DataBase.Settings.GamePause = true;
         Time.timeScale = 0f; // freeze time
         pauseMenu.SetActive(true);
