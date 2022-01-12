@@ -7734,6 +7734,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4672191237187019450, guid: 297b9f2a4f1193c4db253d6871692b37, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
+    - target: {fileID: 4672191237187019450, guid: 297b9f2a4f1193c4db253d6871692b37, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4672191237187019450, guid: 297b9f2a4f1193c4db253d6871692b37, type: 3}
+      propertyPath: m_Color.b
+      value: 0.031149892
+      objectReference: {fileID: 0}
+    - target: {fileID: 4672191237187019450, guid: 297b9f2a4f1193c4db253d6871692b37, type: 3}
+      propertyPath: m_Color.g
+      value: 0.031149892
+      objectReference: {fileID: 0}
+    - target: {fileID: 4672191237187019450, guid: 297b9f2a4f1193c4db253d6871692b37, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9433962
+      objectReference: {fileID: 0}
     - target: {fileID: 8946061959994128141, guid: 297b9f2a4f1193c4db253d6871692b37, type: 3}
       propertyPath: explosionEffect
       value: 
