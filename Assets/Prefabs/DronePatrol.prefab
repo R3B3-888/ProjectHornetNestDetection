@@ -45,12 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drone: {fileID: 7865451823953496142}
-  droneController: {fileID: 0}
-  beginning: 0
-  turningAroundR: 0
-  turningAroundL: 0
-  goingIn: 0
-  goingBack: 0
   distanceMinDroneAndTrees: 20
 --- !u!1001 &3293273845754766464
 PrefabInstance:

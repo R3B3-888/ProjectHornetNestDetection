@@ -1167,7 +1167,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1115955643}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &316120428
 GameObject:
@@ -3757,7 +3757,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1570823259}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &940739486
 MonoBehaviour:
@@ -3905,7 +3905,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3925,11 +3925,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0.25579166, y: -0.69803, z: 0.29826224, w: -0.5986355}
-  m_LocalPosition: {x: -895.95514, y: -664.626, z: 146.5544}
+  m_LocalPosition: {x: -20.75476, y: 79.231445, z: 59.16317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1115955643}
-  m_RootOrder: 1
+  m_Father: {fileID: 1570823259}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 19.202, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -4448,7 +4448,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 705507995}
-  - {fileID: 963194228}
   - {fileID: 308693346}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -4977,7 +4976,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1570823259}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1247735677
 GameObject:
@@ -6155,6 +6154,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 963194228}
   - {fileID: 1240460282}
   - {fileID: 940739485}
   m_Father: {fileID: 0}
@@ -7778,7 +7778,7 @@ MonoBehaviour:
   - {fileID: 1396493340046859609, guid: d9f51aee53e490447bcb8b5f6a78b527, type: 3}
   - {fileID: 15099419666861582, guid: 8e7845835ab37e040815d169d1509351, type: 3}
   - {fileID: 672394873060239570, guid: 29bf49ebfda6c404da5f9501a851413e, type: 3}
-  nestPrefab: {fileID: 6984920542403125191, guid: 013f250b765b6524bb2ab406f8449896, type: 3}
+  nestPrefab: {fileID: 5641130261406223813, guid: ac2609baf545eb044b7f18cc4f7cf87e, type: 3}
   gradient:
     serializedVersion: 2
     key0: {r: 0.2435208, g: 0.27450982, b: 0.16862746, a: 1}

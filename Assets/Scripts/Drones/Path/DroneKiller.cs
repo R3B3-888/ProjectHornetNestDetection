@@ -7,7 +7,7 @@ namespace Drones
     public class DroneKiller : PathController
     {
         #region Variables
-        [SerializeField] private float delay = 3f;
+        [SerializeField] private float delay = 4f;
         private float countdown;
         private bool hasExploded = false;
         [SerializeField] private GameObject explosionEffect;
